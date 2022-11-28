@@ -1,16 +1,19 @@
 <template>
+  <v-app>
     <v-main>
-      <Nav></Nav>
+      <Header/>
       <router-view/>
     </v-main>
+  </v-app>
 </template>
 
 <script>
 
-import Nav from "@/views/Nav";
+import Nav from "@/views/layout/Nav";
+import Header from "@/views/layout/Header";
 export default {
   name: 'App',
-  components: {Nav},
+  components: {Header, Nav},
   data: () => ({
     //
   }),
