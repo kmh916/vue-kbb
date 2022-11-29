@@ -1,6 +1,5 @@
 <template>
   <div>
-    <template>
       <v-data-table
           dense
           :headers="headers"
@@ -9,30 +8,43 @@
           class="elevation-1"
           @click:row="showPost"
       ></v-data-table>
-    </template>
+    <v-btn
+        color="primary"
+        @click="createPost"
+    >글쓰기</v-btn>
   </div>
 </template>
 
 <script>
 
+  import axios from "axios";
+
   export default {
     name: 'Home',
     methods: {
-      showPost(){
+      showPost(e){
         this.$router.push({
-          // path:'/post',
           name: 'postView',
-          params: {postId:'12'},
+          params: {postId:e.id},
         })
       },
+      createPost(){
+        this.$router.push({
+          name: 'createPost',
+        })
+      },
+      getPosts(){
+        axios.get('https://6385af0bbeaa64582665580e.mockapi.io/api/mock/post')
+             .then(res=>{
+               res.data.map(item =>
+                 this.posts.push(item)
+               );
+             })
+             .catch(err=>console.log(err));
+      }
     },
     data: ()=> ({
-      posts : [
-        {
-          writer: 'kmh',
-          title: '안녕안녕',
-        },
-      ],
+      posts : [],
       headers : [
           {
             text: '작성자',
@@ -46,6 +58,9 @@
           },
       ]
     }),
+    created() {
+      this.getPosts();
+    },
     components: {
     },
   }
