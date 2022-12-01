@@ -16,14 +16,21 @@ import axios from "axios";
 
 export default {
   name: "Post",
+  props: {
+    postId : {
+      type: Number,
+    }
+  },
   methods: {
     getPost(postId){
+    console.log(postId)
       axios.get('https://6385af0bbeaa64582665580e.mockapi.io/api/mock/post/'+postId)
            .then(res=>{
               this.post.id = res.data.id;
               this.post.title = res.data.title;
               this.post.writer = res.data.writer;
               this.post.contents = res.data.contents;
+              this.post.replies = res.data.replies
            })
            .catch(err => {
              console.log(err,'err')
@@ -37,10 +44,11 @@ export default {
       title: '',
       writer: '',
       contents: '',
+      replies: [],
     }
   }),
   created() {
-    this.getPost(this.$route.params.postId);
+    this.getPost(this.$props.postId);
   }
 }
 </script>
