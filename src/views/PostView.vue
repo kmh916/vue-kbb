@@ -2,7 +2,7 @@
   <div>
    <Post :postId="postId"/>
    <Replies v-for="reply in replies" :reply="reply"/>
-   <CreateReply :postId="postId"/>
+   <CreateReply :postId="postId" @update="getReplies(postId)"/>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
             this.replies = res.data
           })
           .catch(err => console.log(err))
-    }
+    },
   },
   created() {
     this.postId = Number(this.$route.params.postId);

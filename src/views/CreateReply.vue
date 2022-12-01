@@ -32,8 +32,11 @@ export default {
   methods:{
     createReply(){
       axios.post('https://6385af0bbeaa64582665580e.mockapi.io/api/mock/post/'+this.$props.postId+'/reply',this.createdReply)
-           .then(res => console.log(res))
+           .then(res => this.sendEvent())
            .catch(err => console.log(err));
+    },
+    sendEvent (){
+      this.$emit('update');
     }
   },
 }
