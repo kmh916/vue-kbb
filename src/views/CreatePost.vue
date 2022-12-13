@@ -24,7 +24,7 @@
       <v-btn
         color="primary"
         @click="createPost"
-      ></v-btn>
+      >글 작성</v-btn>
     </v-container>
   </div>
 </template>

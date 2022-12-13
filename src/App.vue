@@ -9,7 +9,7 @@
 
 <script>
 
-import Header from "@/views/layout/Header";
+import Header from "@/layout/Header";
 export default {
   name: 'App',
   components: {Header},

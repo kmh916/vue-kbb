@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "Replies",
+  name: "Reply",
   props:{
     reply:{
       type: Object,

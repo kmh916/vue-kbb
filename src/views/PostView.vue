@@ -1,20 +1,20 @@
 <template>
   <div>
    <Post :postId="postId"/>
-   <Replies v-for="reply in replies" :reply="reply"/>
+   <Reply v-for="reply in replies" :reply="reply"/>
    <CreateReply :postId="postId" @update="getReplies(postId)"/>
   </div>
 </template>
 
 <script>
 
-import Post from "@/views/Post";
-import CreateReply from "@/views/CreateReply";
-import Replies from "@/views/Replies";
+import Post from "@/components/Post";
+import CreateReply from "@/components/CreateReply";
+import Reply from "@/components/Reply";
 import axios from "axios";
 export default {
   name: "PostView",
-  components: {Replies, CreateReply, Post},
+  components: {Reply, CreateReply, Post},
   data: ()=>({
     postId: 0,
     replies: [
